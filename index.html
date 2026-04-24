@@ -328,11 +328,14 @@
 
   // Checkbox wiring — toggles display of the layers via class on map-wrap.
   const mapWrap = svg.parentElement;
-  mapWrap.classList.add("towns-hidden", "roads-hidden");
-  document.getElementById("toggle-towns").addEventListener("change", e => {
+  const townsCb = document.getElementById("toggle-towns");
+  const roadsCb = document.getElementById("toggle-roads");
+  mapWrap.classList.toggle("towns-hidden", !townsCb.checked);
+  mapWrap.classList.toggle("roads-hidden", !roadsCb.checked);
+  townsCb.addEventListener("change", e => {
     mapWrap.classList.toggle("towns-hidden", !e.target.checked);
   });
-  document.getElementById("toggle-roads").addEventListener("change", e => {
+  roadsCb.addEventListener("change", e => {
     mapWrap.classList.toggle("roads-hidden", !e.target.checked);
   });
 
